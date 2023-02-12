@@ -1,0 +1,600 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap");
+.App {
+  display: flex;
+  overflow-y: hidden;
+  max-height: 100vh;
+  background-color: rgb(28, 28, 28);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+  list-style: none;
+  scroll-behavior: smooth;
+  text-decoration: none !important;
+}
+
+ul {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+::-webkit-scrollbar {
+  background-color: rgb(158, 158, 158);
+  width: 15px;
+  padding: 5px;
+  width: 10px;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  width: 5px;
+  margin: 5px;
+  background-color: rgb(100, 97, 97);
+  border-radius: 150px;
+}
+
+main {
+  width: 70vw;
+  height: 95vh;
+  margin: 2.5vmin 2.5vmin 2.5vmin 1.25vmin;
+  overflow: hidden;
+  background-color: rgb(54, 54, 54);
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+nav {
+  width: 100%;
+  min-height: 12.5vmin;
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  z-index: 10;
+  background-color: rgb(65, 65, 65);
+  padding: 0 2.5vmin 0 2.5vmin;
+}
+
+.navList {
+  width: -moz-min-content;
+  width: min-content;
+  display: grid;
+  grid-auto-flow: column;
+  gap: 1.5vmin;
+}
+
+.navItem {
+  width: 15vmin;
+  height: 6vmin;
+  background-color: rgb(83, 83, 83);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  border-radius: 150px;
+  color: var(--bs-white);
+}
+
+.favoriteRemoved {
+  display: flex;
+  position: fixed;
+  width: -moz-max-content;
+  width: max-content;
+  padding: 2.5vmin;
+  height: 7.5vmin;
+  background-color: red;
+  bottom: 2.5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  border-radius: 150px;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgb(253, 222, 97);
+  opacity: 0;
+  visibility: hidden;
+}
+.favoriteRemoved #favoriteRemovedIcon {
+  width: 4.5vmin;
+  height: 4.5vmin;
+}
+.favoriteRemoved span {
+  font-size: 1rem;
+  margin-left: 2vmin;
+}
+
+.favoriteWarning {
+  display: flex;
+  position: fixed;
+  width: -moz-max-content;
+  width: max-content;
+  padding: 2.5vmin;
+  height: 7.5vmin;
+  background-color: red;
+  bottom: 2.5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  border-radius: 150px;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgb(253, 97, 97);
+  color: var(--bs-white);
+  opacity: 0;
+  visibility: hidden;
+}
+.favoriteWarning #favoriteWariningIcon {
+  width: 4.5vmin;
+  height: 4.5vmin;
+}
+.favoriteWarning span {
+  font-size: 1rem;
+  margin-left: 2vmin;
+}
+
+.favoriteAdded {
+  display: flex;
+  position: fixed;
+  width: -moz-max-content;
+  width: max-content;
+  padding: 3.5vmin;
+  height: 7.5vmin;
+  background-color: red;
+  bottom: 5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  border-radius: 150px;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgb(173, 216, 230);
+  opacity: 0;
+  visibility: hidden;
+}
+.favoriteAdded #favoriteAddedIcon {
+  width: 3.5vmin;
+  height: 3.5vmin;
+}
+.favoriteAdded span {
+  font-size: 1rem;
+  margin-left: 2vmin;
+}
+
+.scheduleContainer {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.animeSliders {
+  display: flex;
+  width: 14svmin;
+  justify-content: space-between;
+}
+
+.prevAnime-icon, .nextAnime-icon {
+  width: 6.5vmin;
+  height: 6.5vmin;
+  color: var(--bs-white);
+  background-color: var(--bs-black);
+  border-radius: 50%;
+  padding: 1.5vmin;
+  cursor: pointer;
+  pointer-events: all;
+}
+
+.upcomingContainer {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  margin-top: 2.5vmin;
+  position: relative;
+  padding: 0 2.5vmin 2.5vmin 2.5vmin;
+}
+
+.upcomingHeader {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2.5vmin;
+  font-size: 2.5rem;
+  color: var(--bs-white);
+  align-items: center;
+}
+
+.upcomingList {
+  display: grid;
+  grid-auto-flow: column;
+  gap: 2vmin;
+  transition: 1.15s;
+}
+
+.upcomingItem {
+  width: 25vmin;
+  height: auto;
+  aspect-ratio: 1/1.5;
+  position: relative;
+  border-radius: 15px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+}
+.upcomingItem .upcomingInformation {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  color: var(--bs-white);
+  padding: 1.5vmin;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 17%, rgba(0, 0, 0, 0.9136904762) 96%);
+}
+.upcomingItem .upcomingInformation #upcomingTitle {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  font-size: 1.15rem;
+}
+.upcomingItem .upcomingInformation #upcomingDate {
+  width: -moz-max-content;
+  width: max-content;
+  height: auto;
+  background-color: var(--bs-black);
+  border-radius: 150px;
+  color: var(--bs-white);
+  padding: 5px 15px;
+  font-size: 0.95rem;
+  margin-bottom: auto;
+}
+
+.airingHeader {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2.5vmin;
+  color: var(--bs-white);
+  font-size: 2.5rem;
+  align-items: center;
+}
+
+.airingContainer {
+  width: 100%;
+  height: auto;
+  margin-top: 2.5vmin;
+  position: relative;
+  padding: 0 2.5vmin 2.5vmin 2.5vmin;
+}
+
+.airingList {
+  display: grid;
+  grid-auto-flow: column;
+  gap: 2vmin;
+  transition: 1.15s;
+}
+
+.airingItem {
+  width: 25vmin;
+  height: auto;
+  aspect-ratio: 1/1.5;
+  position: relative;
+  border-radius: 15px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+}
+.airingItem .airingInformation {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  color: var(--bs-white);
+  padding: 1.5vmin;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 17%, rgba(0, 0, 0, 0.9136904762) 96%);
+}
+.airingItem .airingInformation #airingTitle {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  font-size: 1.15rem;
+}
+.airingItem .airingInformation #airingEpisode {
+  width: -moz-max-content;
+  width: max-content;
+  height: auto;
+  background-color: var(--bs-black);
+  border-radius: 150px;
+  color: var(--bs-white);
+  padding: 5px 15px;
+  font-size: 0.95rem;
+  margin-bottom: auto;
+}
+.airingItem .airingInformation #airingTime {
+  width: -moz-max-content;
+  width: max-content;
+  height: auto;
+  background-color: #72F2EB;
+  border-radius: 150px;
+  color: var(--bs-black);
+  padding: 5px 15px;
+  font-size: 0.85rem;
+  margin-top: 1vmin;
+}
+
+.favoriteContainer {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  overflow-y: auto;
+  background-color: rgb(54, 54, 54);
+  border-radius: 15px 5px 5px 15px;
+  padding: 2.5vmin 2.5vmin 2.5vmin 2.5vmin;
+}
+
+.favoriteList {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2vmin;
+}
+
+.favoriteItem {
+  width: auto;
+  height: auto;
+  aspect-ratio: 2.5/1;
+  position: relative;
+  border-radius: 15px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+}
+.favoriteItem .favoriteInformation {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  color: var(--bs-white);
+  padding: 1.5vmin;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 17%, rgba(0, 0, 0, 0.9136904762) 96%);
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 5;
+  padding-right: 10vmin;
+}
+.favoriteItem .favoriteInformation #favoriteTitle {
+  font-size: 1.25rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.favoriteItem .favoriteRemove {
+  width: 5vmin;
+  height: 5vmin;
+  background-color: rgb(28, 28, 28);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  border-radius: 10px;
+  margin: 2vmin;
+  cursor: pointer;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 5;
+  transition-duration: 0.5s;
+  opacity: 0;
+}
+.favoriteItem .favoriteRemove #favoriteRemoveIcon {
+  width: 60%;
+  height: 60%;
+  transition-duration: 0.75s;
+  color: rgb(100, 100, 100);
+}
+.favoriteItem .favoriteRemove:hover > #favoriteRemoveIcon {
+  color: #F21D44;
+  transition-duration: 0.75s;
+}
+.favoriteItem .favoriteBanner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: auto;
+  height: 100%;
+}
+
+.favoriteItem:hover > .favoriteRemove {
+  opacity: 1;
+}
+
+.animeContainer {
+  width: 30vw;
+  height: 95vh;
+  margin: 2.5vmin 1.25vmin 2.5vmin 2.5vmin;
+  overflow: hidden;
+  overflow-y: auto;
+  background-color: rgb(54, 54, 54);
+  border-radius: 15px 5px 5px 15px;
+}
+
+.animeSearch {
+  width: 100%;
+  height: 10vmin;
+  position: sticky;
+  top: 0;
+  z-index: 15;
+  background-color: rgb(65, 65, 65);
+  box-shadow: 0 1.5px 5px -5px black;
+  padding: 1.5vmin;
+}
+.animeSearch #animeSearchInput {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  background-color: rgb(100, 100, 100);
+  border-radius: 150px;
+  text-indent: 2.5vmin;
+  color: var(--bs-white);
+}
+.animeSearch #animeSearchInput::-moz-placeholder {
+  color: var(--bs-white);
+}
+.animeSearch #animeSearchInput::placeholder {
+  color: var(--bs-white);
+}
+
+.animeList {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2vmin;
+  padding: 2.5vmin;
+}
+
+.animeItem {
+  width: auto;
+  height: auto;
+  aspect-ratio: 1/1.5;
+  position: relative;
+  border-radius: 15px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+}
+.animeItem .animeInformation {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  font-size: 1.25rem;
+  color: var(--bs-white);
+  padding: 1.5vmin;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 17%, rgba(0, 0, 0, 0.9136904762) 96%);
+}
+.animeItem .animeInformation #animeTitle {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+.animeItem .animeInformation #animeEpisodes {
+  font-size: 1rem;
+}
+.animeItem .animeFavorite {
+  width: 5vmin;
+  height: 5vmin;
+  border-radius: 5px;
+  background-color: rgb(28, 28, 28);
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 1.5vmin;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transition-duration: 0.5s;
+}
+.animeItem .animeFavorite #animeFavoriteIcon {
+  width: 3vmin;
+  height: 3vmin;
+  transition: 0.35s;
+  color: rgb(100, 100, 100);
+}
+.animeItem .animeFavorite:hover > #animeFavoriteIcon {
+  color: #F21D44;
+}
+
+.animeItem:hover > .animeFavorite {
+  opacity: 1;
+}
+
+.animeLoading {
+  width: 100%;
+  display: grid;
+  place-items: center;
+}
+
+.lds-ellipsis {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lds-ellipsis div {
+  position: absolute;
+  top: 33px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: var(--bs-black);
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+
+.lds-ellipsis div:nth-child(1) {
+  left: 8px;
+  animation: lds-ellipsis1 0.6s infinite;
+}
+
+.lds-ellipsis div:nth-child(2) {
+  left: 8px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+
+.lds-ellipsis div:nth-child(3) {
+  left: 32px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+
+.lds-ellipsis div:nth-child(4) {
+  left: 56px;
+  animation: lds-ellipsis3 0.6s infinite;
+}
+
+@keyframes lds-ellipsis1 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes lds-ellipsis3 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes lds-ellipsis2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(24px, 0);
+  }
+}/*# sourceMappingURL=index.css.map */
