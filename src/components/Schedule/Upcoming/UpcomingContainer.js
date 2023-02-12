@@ -21,10 +21,8 @@ const UpcomingContainer = () => {
         if (positionSlide == 4){
             setLastSlide(moveSlide);
             setMoveSlide(moveSlide-21.5);
-            console.log(positionSlide);
         } else {
             setMoveSlide(moveSlide-27);
-            console.log(positionSlide);
         }
     }
 
